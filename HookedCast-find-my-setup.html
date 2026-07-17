@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Find My Setup — CastRight</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@400;500;600&family=Work+Sans:wght@400;500;600&family=JetBrains+Mono&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container">
+    <a href="index.html" class="logo">Cast<span>Right</span></a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="find-my-setup.html">Find My Setup</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </div>
+</header>
+
+<section>
+  <div class="container quiz-wrap">
+    <span class="eyebrow">Find My Setup</span>
+    <h2 style="margin-bottom: 8px;">A few questions, then your setup.</h2>
+
+    <!-- Progress indicator: a bobber sliding along a fishing line -->
+    <div class="progress-line">
+      <svg viewBox="0 0 600 40">
+        <path id="track-path" class="progress-track" d="M 10 20 L 590 20"/>
+        <path id="fill-path" class="progress-fill" d="M 10 20 L 590 20"
+              stroke-dasharray="580" stroke-dashoffset="580"/>
+        <circle id="bobber" cx="10" cy="20" r="9" fill="#C1440E" stroke="#16262E" stroke-width="1.5"/>
+      </svg>
+    </div>
+
+    <form id="quiz-form">
+
+      <div class="step active" data-step="1">
+        <span class="step-eyebrow">Question 1 of 3</span>
+        <h3>What are you targeting?</h3>
+        <div class="option-list" data-field="species">
+          <button type="button" class="option" data-value="bass">Bass
+            <span class="option-sub">largemouth or smallmouth</span></button>
+          <button type="button" class="option" data-value="walleye">Walleye</button>
+          <button type="button" class="option" data-value="panfish">Trout / Panfish
+            <span class="option-sub">smaller, lighter fights</span></button>
+          <button type="button" class="option" data-value="notsure">Not sure yet
+            <span class="option-sub">just want something versatile</span></button>
+        </div>
+      </div>
+
+      <div class="step" data-step="2">
+        <span class="step-eyebrow">Question 2 of 3</span>
+        <h3>How do you usually fish?</h3>
+        <div class="option-list" data-field="location">
+          <button type="button" class="option" data-value="shore">From shore or a dock</button>
+          <button type="button" class="option" data-value="boat">From a boat or kayak</button>
+        </div>
+      </div>
+
+      <div class="step" data-step="3">
+        <span class="step-eyebrow">Question 3 of 3</span>
+        <h3>What's your budget for the full setup?</h3>
+        <div class="option-list" data-field="budget">
+          <button type="button" class="option" data-value="low">Under $75
+            <span class="option-sub">just getting started</span></button>
+          <button type="button" class="option" data-value="mid">$75 – $150
+            <span class="option-sub">good balance of quality and price</span></button>
+          <button type="button" class="option" data-value="high">$150+
+            <span class="option-sub">want it to last for years</span></button>
+        </div>
+      </div>
+
+      <div class="step-nav">
+        <button type="button" id="back-btn" class="btn btn-outline" style="visibility:hidden;">← Back</button>
+        <button type="button" id="next-btn" class="btn btn-primary" disabled>Next →</button>
+      </div>
+
+    </form>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="container footer-row">
+    <span>© 2026 CastRight</span>
+    <span><a href="about.html">About</a> · <a href="contact.html">Contact</a></span>
+  </div>
+</footer>
+
+<script src="recommendations.js"></script>
+<script src="quiz.js"></script>
+</body>
+</html>

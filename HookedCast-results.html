@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Your Setup — CastRight</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@400;500;600&family=Work+Sans:wght@400;500;600&family=JetBrains+Mono&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container">
+    <a href="index.html" class="logo">Cast<span>Right</span></a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="find-my-setup.html">Find My Setup</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </div>
+</header>
+
+<section>
+  <div class="container" style="max-width: 680px;">
+    <span class="eyebrow">Your Match</span>
+    <h2 id="result-title" style="margin-bottom: 28px;">Loading your setup…</h2>
+
+    <div class="result-hero">
+      <table class="spec-table" id="spec-table"></table>
+    </div>
+
+    <div class="card" style="margin-bottom: 28px;">
+      <h3>Why this setup</h3>
+      <p id="result-notes"></p>
+      <p id="location-notes" style="margin-top: -8px;"></p>
+    </div>
+
+    <div style="display:flex; gap: 16px; flex-wrap: wrap;">
+      <a href="find-my-setup.html" class="btn btn-outline">← Retake the quiz</a>
+      <a href="index.html" class="btn btn-primary">Back to home</a>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="container footer-row">
+    <span>© 2026 CastRight</span>
+    <span><a href="about.html">About</a> · <a href="contact.html">Contact</a></span>
+  </div>
+</footer>
+
+<script src="recommendations.js"></script>
+<script>
+  const saved = localStorage.getItem("castright-answers");
+
+  if (!saved) {
+    // No answers found - probably arrived here directly. Send them to the quiz.
+    window.location.href = "find-my-setup.html";
+  } else {
+    const answers = JSON.parse(saved);
+    const result = getRecommendation(answers);
+
+    document.getElementById("result-title").textContent = result.title;
+
+    const rows = [
+      ["Rod", result.rod],
+      ["Reel", result.reel],
+      ["Line", result.line],
+      ["Lures / Bait", result.lures],
+      ["Estimated cost", result.estCost],
+    ];
+    const table = document.getElementById("spec-table");
+    rows.forEach(([label, value]) => {
+      const tr = document.createElement("tr");
+      tr.innerHTML = `<td>${label}</td><td>${value}</td>`;
+      table.appendChild(tr);
+    });
+
+    document.getElementById("result-notes").textContent = result.notes;
+    document.getElementById("location-notes").textContent = result.locationNote;
+  }
+</script>
+</body>
+</html>

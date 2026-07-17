@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact — CastRight</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@400;500;600&family=Work+Sans:wght@400;500;600&family=JetBrains+Mono&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container">
+    <a href="index.html" class="logo">Cast<span>Right</span></a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="find-my-setup.html">Find My Setup</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </div>
+</header>
+
+<section>
+  <div class="container" style="max-width: 680px;">
+    <span class="eyebrow">Contact</span>
+    <h2>Get in touch</h2>
+    <p>Questions, corrections, or a setup you want added — send a note below.</p>
+
+    <!-- NOTE: this form doesn't send anywhere yet - there's no backend.
+         When you're ready to actually receive messages, the simplest
+         options are Formspree or Netlify Forms (both just need you to
+         point the form's "action" attribute at their URL - no server
+         code required). For now it just shows a friendly message. -->
+    <form class="contact-form" id="contact-form">
+      <div>
+        <label for="name">Name</label>
+        <input type="text" id="name" name="name" required>
+      </div>
+      <div>
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" required>
+      </div>
+      <div>
+        <label for="message">Message</label>
+        <textarea id="message" name="message" rows="5" required></textarea>
+      </div>
+      <button type="submit" class="btn btn-primary">Send message</button>
+      <p id="form-status" class="mono" style="display:none;">Thanks — this form isn't wired up to send messages yet, but the design is ready for when it is.</p>
+    </form>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="container footer-row">
+    <span>© 2026 CastRight</span>
+    <span><a href="about.html">About</a> · <a href="contact.html">Contact</a></span>
+  </div>
+</footer>
+
+<script>
+  document.getElementById("contact-form").addEventListener("submit", (e) => {
+    e.preventDefault();
+    document.getElementById("form-status").style.display = "block";
+  });
+</script>
+</body>
+</html>
